@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets and local config - never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+*.local.json
+
+# Scan output: findings, evidence and transcripts can contain sensitive data from the systems you tested
+*.db
+*.sqlite
+*.sqlite3
+reports/
+risk*.jsonl
+*-report.pdf
+!docs/images/*.png
+results.json
+*.sarif
+!tests/fixtures/*.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

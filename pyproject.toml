@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sfynx"
+version = "0.3.0"
+description = "Open-source hybrid security testing for applications, APIs and AI agents: deterministic scanners first, an open-weight model (Gemma 4) only to correlate and explain"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+readme = "README.md"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+pdf = ["reportlab>=4"]
+
+[project.scripts]
+sfynx = "hstp.cli:main"
+hstp = "hstp.cli:main"  # legacy alias; the Python package is still named hstp
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "W"]
+ignore = ["E501", "E731", "B008"]  # long lines are tolerated; lambdas are used deliberately in the HTTP handlers
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011", "E402"]
